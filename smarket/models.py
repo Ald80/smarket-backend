@@ -13,4 +13,4 @@ class Tarefa(models.Model):
     user = models.ForeignKey(Usuario, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "%s %s %s" % (self.descricao, self.estado, self.user_id)
+        return "%s %s %s" % (self.descricao, self.estado, self.user)
