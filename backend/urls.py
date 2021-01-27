@@ -13,7 +13,8 @@ urlpatterns = [
     path('usuario', views.UsuarioList.as_view()),
     path('usuario/<int:pk>', views.UsuarioDetail.as_view()),
     path('tarefa', views.TarefaList.as_view()),
-    path( 'tarefa/<int:pk>', views.TarefaDetail.as_view()),
+    path('tarefa/<int:pk>', views.TarefaDetail.as_view()),
+    path('tarefa-usuario/<int:fk>', views.TarefaUsuario.as_view()),
     path('', include(router.urls)),
 ]
 

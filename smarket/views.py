@@ -23,3 +23,17 @@ class TarefaList(generics.ListCreateAPIView):
 class TarefaDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Tarefa.objects.all()
     serializer_class = TarefaSerializer
+
+class TarefaUsuario(APIView):
+
+    def get_object(self, fk):
+        try:
+            tarefa = Tarefa.objects.filter(user=fk)
+            return tarefa
+        except Tarefa.DoesNotExist:
+            raise Http404
+
+    def get(self, request, fk, format=None):
+        tarefa = self.get_object(fk)
+        serializer = TarefaSerializer(tarefa, many=True)
+        return Response(serializer.data)
